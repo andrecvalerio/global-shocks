@@ -12,7 +12,7 @@ source("br_fevd.R")  # These four routines import and clean the data for each co
 source("ch_fevd.R")
 source("col_fevd.R")
 source("per_fevd.R")
-source("all.R")     # This routine make final adjust to the data and generate the graphs in the paper
+source("plot.R")     # This routine make final adjust to the data and generate the graphs in the paper
 
 # Cleaning the workspace
 rm(list = ls())
