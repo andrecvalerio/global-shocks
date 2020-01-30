@@ -204,14 +204,14 @@ intl <- intl %>%
                   Variable == "PCOM"
                 ) %>% 
   dplyr::mutate(Variable = recode(Variable, 
-                                  "WGDP" = "WDEM", 
-                                  "VIX" = "WUNC", 
-                                  "PCOM" = "WSUP"
+                                  "WGDP" = "World GDP", 
+                                  "VIX" = "VIX", 
+                                  "PCOM" = "Commodity Prices"
                                   ),
                 Variable = factor(Variable, 
-                                  levels = c("WDEM", 
-                                             "WUNC", 
-                                             "WSUP"
+                                  levels = c("World GDP", 
+                                             "VIX", 
+                                             "Commodity Prices"
                                              )
                                   ),
                 Shock    = factor(Shock, 
