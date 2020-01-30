@@ -12,9 +12,9 @@ df <- dplyr::bind_rows(br_tidy,
 # I factor the "horizon" and "variable" variables to be able to change the order in the panels and in the axis
 df <- df %>% 
   dplyr::mutate(Variable = recode(Variable,
-                                  "WGDP" = "WDEM",
-                                  "PCOM" = "WSUP",
-                                  "VIX"  = "WUNC"
+                                  "WGDP" = "World GDP",
+                                  "PCOM" = "Commodity Prices",
+                                  "VIX"  = "VIX"
   )
   ) %>% 
   dplyr::mutate(Shock = recode(Shock,
@@ -56,9 +56,9 @@ df <- df %>%
                                              "EXR",
                                              "CPI",
                                              "INTR",
-                                             "WDEM",
-                                             "WSUP",
-                                             "WUNC"
+                                             "World GDP",
+                                             "Commodity Prices",
+                                             "VIX"
                                   )
   )
   ) %>% 
@@ -87,7 +87,7 @@ ndf <- df %>%
   dplyr::filter(Model != "Model 3") 
 
 wdem <- ndf %>% 
-  dplyr::filter(Variable == "WDEM"
+  dplyr::filter(Variable == "World GDP"
   ) %>% 
   dplyr::filter(Country == "Brazil") %>% 
   dplyr::filter(Horizon == 1 | 
@@ -128,7 +128,7 @@ wdem <- ndf %>%
                      sec.axis = dup_axis()
   ) +
   labs(x = "", 
-       y = "WDEM"
+       y = "World GDP"
   ) +
   scale_fill_manual("",
                     values=c("WSUP" = "#62b4ff",# '#64FF7D', WSUP
@@ -150,7 +150,7 @@ wdem <- ndf %>%
 # Intl - WSUP -------------------------------------------------------------------
 
 wsup <- ndf %>% 
-  dplyr::filter(Variable == "WSUP"
+  dplyr::filter(Variable == "Commodity Prices"
   ) %>% 
   dplyr::filter(Country == "Brazil") %>% 
   dplyr::filter(Horizon == 1 | 
@@ -191,7 +191,7 @@ wsup <- ndf %>%
                      sec.axis = dup_axis()
   ) +
   labs(x = "", 
-       y = "WSUP"
+       y = "Commodity Prices"
   ) +
   scale_fill_manual("",
                     values=c("WSUP" = "#62b4ff",# '#64FF7D', WSUP
@@ -212,7 +212,7 @@ wsup <- ndf %>%
 
 # Intl - WUNC --------------------------------------------------------------------
 wunc_ndf <- ndf %>% 
-  dplyr::filter(Variable == "WUNC" & 
+  dplyr::filter(Variable == "VIX" & 
                   Country == "Brazil"
   ) %>% 
   dplyr::filter(Horizon == 1 | 
@@ -224,7 +224,7 @@ wunc_ndf <- dplyr::add_row(wunc_ndf,
                            Horizon = rep(c(1,4,16),
                                          3
                            ), 
-                           Variable = rep("WUNC",
+                           Variable = rep("VIX",
                                           9
                            ), 
                            Response = rep(0,
@@ -249,7 +249,7 @@ wunc_ndf <- dplyr::add_row(wunc_ndf,
 )
 
 wunc <- wunc_ndf %>% 
-  dplyr::filter(Variable == "WUNC"
+  dplyr::filter(Variable == "VIX"
   ) %>% 
   dplyr::filter(Country == "Brazil") %>% 
   dplyr::filter(Horizon == 1 | 
@@ -290,7 +290,7 @@ wunc <- wunc_ndf %>%
                      sec.axis = dup_axis()
   ) +
   labs(x = "", 
-       y = "WUNC"
+       y = "VIX"
   ) +
   scale_fill_manual("",
                     values=c("WSUP" = "#62b4ff",# '#64FF7D', WSUP
