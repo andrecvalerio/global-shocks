@@ -24,13 +24,13 @@ nshock  = 1;     %number of shocks; since I want each figure to contain the
 which_shock  = 3; %WGDP
 which_shock2 = 4; %VIX
 which_shock3 = 5; %PCOM
-which_shock4 = 6; %CR
+%which_shock4 = 6; %CR
 
 % Name each shock separatedely
 name_shock  = varlist(which_shock);   %WGDP
 name_shock2 = varlist(which_shock2); %VIX
 name_shock3 = varlist(which_shock3); %PCOM
-name_shock4 = varlist(which_shock4); %CR
+%name_shock4 = varlist(which_shock4); %CR
 
 new_nvar=3; % define the No of lines the plot has. Since I want to analyse 5 
             % domestic variables, the plot is divided in 3x2 square for
@@ -139,37 +139,37 @@ pcom       = irf4(:,:,1).*(1.326154);
 pcom_low68 = irf4_low68(:,:,1).*(1.326154);
 pcom_up68  = irf4_up68(:,:,1).*(1.326154);
 
-%%%%%%%%%%%% Obtaining the IRFs for the third shock - CR shock
-[t,numvar]=size(imfhat);
-irf5=zeros(t,nvar,nshock);
-for n=1:length(which_shock4)
-irf5(:,:,n)=imfhat(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
-end
-
-%Lower CI for shocks 1 and 2 and at 68% and 90%
-irf5_low68=zeros(t,nvar,nshock);
-for n=1:length(which_shock4)
-irf5_low68(:,:,n)=imferrl1(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
-end
-
-irf5_low90=zeros(t,nvar,nshock);
-for n=1:length(which_shock4)
-irf5_low90(:,:,n)=imferrl1(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
-end
-
-irf5_up68=zeros(t,nvar,nshock);
-for n=1:length(which_shock4)
-irf5_up68(:,:,n)=imferrh1(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
-end
-
-irf5_up90=zeros(t,nvar,nshock);
-for n=1:length(which_shock4)
-irf5_up90(:,:,n)=imferrh(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
-end
-
-cr       = irf5(:,:,1);
-cr_low68 = irf5_low68(:,:,1);
-cr_up68  = irf5_up68(:,:,1);
+% %%%%%%%%%%%% Obtaining the IRFs for the third shock - CR shock
+% [t,numvar]=size(imfhat);
+% irf5=zeros(t,nvar,nshock);
+% for n=1:length(which_shock4)
+% irf5(:,:,n)=imfhat(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
+% end
+% 
+% %Lower CI for shocks 1 and 2 and at 68% and 90%
+% irf5_low68=zeros(t,nvar,nshock);
+% for n=1:length(which_shock4)
+% irf5_low68(:,:,n)=imferrl1(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
+% end
+% 
+% irf5_low90=zeros(t,nvar,nshock);
+% for n=1:length(which_shock4)
+% irf5_low90(:,:,n)=imferrl1(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
+% end
+% 
+% irf5_up68=zeros(t,nvar,nshock);
+% for n=1:length(which_shock4)
+% irf5_up68(:,:,n)=imferrh1(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
+% end
+% 
+% irf5_up90=zeros(t,nvar,nshock);
+% for n=1:length(which_shock4)
+% irf5_up90(:,:,n)=imferrh(:,(nvar*(which_shock4(n)-1)+1):(nvar*which_shock4(n)));
+% end
+% 
+% cr       = irf5(:,:,1);
+% cr_low68 = irf5_low68(:,:,1);
+% cr_up68  = irf5_up68(:,:,1);
 
 
 %%%%%%%%%%% Ploting the first shock - WGDP shock
@@ -329,54 +329,54 @@ elseif which_country == 5   %saving for Mexico
 elseif which_country == 4   %saving for Peru
     saveas(gcf,'irf_pcom_per','jpg');
 end
-
-%%%%%%%%%%% Ploting the fourth shock - CR shock
-zero=0*(1:imstp);
-ncoluna = 2; % defining the number of columns in the subplot
-figure('Name','Impulse Response Function and 68% C.Interval');
-I=1:6;       % defining the number of squares in the subplot, since I want
-             % a plot of 3x2, I need 6 squares
-vector = [1 2 6 7 8];     % which variables will respond to the shock
-                            % GDP, CPI, EMBI, EXR, INTR
-for i = 1:length(vector)    % will plot each variable in a specfic square
-    j = vector(i);
-     for n=1:nshock
-         subplot(new_nvar,ncoluna,I(n));
-         plot (1:imstp,zero,'k-',1:imstp,cr(:,j,n),'k-',1:imstp,cr_low68(:,j,n),'k:',1:imstp,cr_up68(:,j,n),'k:');
-         ymax=max(0,1.20*max(cr_up68(:,j,n)));
-         ymin=min(0,1.20*min(cr_low68(:,j,n)));
-         if ymax==0;
-             ymax=0.005;
-         end
-         if ymin==0;
-             ymin=-0.005;
-         end
-         axis([-inf,imstp,ymin,ymax]);
-         if n==1
-             ylabel(ylab(j));
-         end
-         if j==1 %will name the shock in the figure; beware of this when performing changes in the code
-             title(name_shock4);
-         elseif j==2
-             title(name_shock4);
-         end
-         set(gca,'FontSize',7);
-     end
-     I=I+nshock;
-end
-
-% saving the figures
-if which_country == 1       % saving for Brazil
-    saveas(gcf,'irf_cr_br','jpg');
-elseif which_country == 2   %saving for Chile
-    saveas(gcf,'irf_cr_ch','jpg');
-elseif which_country == 3   %saving for Colombia
-    saveas(gcf,'irf_cr_col','jpg');
-elseif which_country == 5   %saving for Mexico
-    saveas(gcf,'irf_cr_mex','jpg');
-elseif which_country == 4   %saving for Peru
-    saveas(gcf,'irf_cr_per','jpg');
-end
+% 
+% %%%%%%%%%%% Ploting the fourth shock - CR shock
+% zero=0*(1:imstp);
+% ncoluna = 2; % defining the number of columns in the subplot
+% figure('Name','Impulse Response Function and 68% C.Interval');
+% I=1:6;       % defining the number of squares in the subplot, since I want
+%              % a plot of 3x2, I need 6 squares
+% vector = [1 2 6 7 8];     % which variables will respond to the shock
+%                             % GDP, CPI, EMBI, EXR, INTR
+% for i = 1:length(vector)    % will plot each variable in a specfic square
+%     j = vector(i);
+%      for n=1:nshock
+%          subplot(new_nvar,ncoluna,I(n));
+%          plot (1:imstp,zero,'k-',1:imstp,cr(:,j,n),'k-',1:imstp,cr_low68(:,j,n),'k:',1:imstp,cr_up68(:,j,n),'k:');
+%          ymax=max(0,1.20*max(cr_up68(:,j,n)));
+%          ymin=min(0,1.20*min(cr_low68(:,j,n)));
+%          if ymax==0;
+%              ymax=0.005;
+%          end
+%          if ymin==0;
+%              ymin=-0.005;
+%          end
+%          axis([-inf,imstp,ymin,ymax]);
+%          if n==1
+%              ylabel(ylab(j));
+%          end
+%          if j==1 %will name the shock in the figure; beware of this when performing changes in the code
+%              title(name_shock4);
+%          elseif j==2
+%              title(name_shock4);
+%          end
+%          set(gca,'FontSize',7);
+%      end
+%      I=I+nshock;
+% end
+% 
+% % saving the figures
+% if which_country == 1       % saving for Brazil
+%     saveas(gcf,'irf_cr_br','jpg');
+% elseif which_country == 2   %saving for Chile
+%     saveas(gcf,'irf_cr_ch','jpg');
+% elseif which_country == 3   %saving for Colombia
+%     saveas(gcf,'irf_cr_col','jpg');
+% elseif which_country == 5   %saving for Mexico
+%     saveas(gcf,'irf_cr_mex','jpg');
+% elseif which_country == 4   %saving for Peru
+%     saveas(gcf,'irf_cr_per','jpg');
+% end
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

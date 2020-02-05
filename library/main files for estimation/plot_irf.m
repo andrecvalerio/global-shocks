@@ -1,6 +1,6 @@
 imfhat;      %matrix with IRFs
 nlinha=ndv;  %number of variables;
-nshock=4;    %how many shocks;
+nshock=3;    %how many shocks;
 
 %imfhat is matriz of T X (nvar x nvar) dimension
 %  - T = number of periods
@@ -12,7 +12,7 @@ nshock=4;    %how many shocks;
 
 % Organizing IRFs and CIs to plot
 %IRF for shocks 3,4- WGDP, VIX, PCOM
-which_shock=[3,4,5,6];  %variables that receive the shock - WGDP, VIX, PCOM
+which_shock=[3,4,5];  %variables that receive the shock - WGDP, VIX, PCOM
 name_shock=varlist(which_shock);
 new_nvar3=3; % number of line for plot
 
@@ -47,18 +47,18 @@ irf_adj   = irf;
 adj_low68 = irf_low68;
 adj_up68  = irf_up68;
 
-irf_adj(:,:,1) = irf(:,:,1);%.*(2.186557);
-irf_adj(:,:,3) = irf(:,:,3);%.*(1.326154);
+irf_adj(:,:,1) = irf(:,:,1).*(2.171108);
+irf_adj(:,:,3) = irf(:,:,3).*(1.329779);
 
-adj_low68(:,:,1) = irf_low68(:,:,1);%.*(2.186557);
-adj_low68(:,:,3) = irf_low68(:,:,3);%.*(1.326154);
+adj_low68(:,:,1) = irf_low68(:,:,1).*(2.171108);
+adj_low68(:,:,3) = irf_low68(:,:,3).*(1.329779);
 
-adj_up68(:,:,1) = irf_up68(:,:,1);%.*(2.186557);
-adj_up68(:,:,3) = irf_up68(:,:,3);%.*(1.326154);
+adj_up68(:,:,1) = irf_up68(:,:,1).*(2.171108);
+adj_up68(:,:,3) = irf_up68(:,:,3).*(1.329779);
 
-irf_adj(:,:,2)   = irf(:,:,2);%.*(-2.818251);
-adj_low68(:,:,2) = irf_low68(:,:,2);%irf_up68(:,:,2).*(-2.818251);
-adj_up68(:,:,2)  = irf_up68(:,:,2);%irf_low68(:,:,2).*(-2.818251);
+irf_adj(:,:,2)   = irf(:,:,2).*(-2.82215);
+adj_low68(:,:,2) = irf_up68(:,:,2).*(-2.82215);
+adj_up68(:,:,2)  = irf_low68(:,:,2).*(-2.82215);
 
 % if which_country == 1
 %     irf_adj(:,:,2)   = irf(:,:,2).*(2.818251);
@@ -115,17 +115,17 @@ end
 wgdp_shock = irf_adj(:,:,1);
 vix_shock  = irf_adj(:,:,2);
 pcom_shock = irf_adj(:,:,3);
-cr_shock   = irf_adj(:,:,4);
+%cr_shock   = irf_adj(:,:,4);
 
 wgdp_low68 = adj_low68(:,:,1);
 vix_low68  = adj_low68(:,:,2);
 pcom_low68 = adj_low68(:,:,3);
-cr_low68   = adj_low68(:,:,4);
+%cr_low68   = adj_low68(:,:,4);
 
 wgdp_up68 = adj_up68(:,:,1);
 vix_up68  = adj_up68(:,:,2);
 pcom_up68 = adj_up68(:,:,3);
-cr_up68   = adj_up68(:,:,4);
+%cr_up68   = adj_up68(:,:,4);
 
 col_header = ['Horizon', varlist];
 row_header = (1:16)';
@@ -161,16 +161,6 @@ if which_country == 1
     xlswrite('IRF_br_pcom_up',pcom_up68,'Sheet 1','B2');
     xlswrite('IRF_br_pcom_up',col_header,'Sheet 1','A1');
     xlswrite('IRF_br_pcom_up',row_header,'Sheet 1','A2');
-
-    xlswrite('IRF_br_cr',cr_shock,'Sheet 1','B2');
-    xlswrite('IRF_br_cr',col_header,'Sheet 1','A1');
-    xlswrite('IRF_br_cr',row_header,'Sheet 1','A2');
-    xlswrite('IRF_br_cr_low',cr_low68,'Sheet 1','B2');
-    xlswrite('IRF_br_cr_low',col_header,'Sheet 1','A1');
-    xlswrite('IRF_br_cr_low',row_header,'Sheet 1','A2');
-    xlswrite('IRF_br_cr_up',cr_up68,'Sheet 1','B2');
-    xlswrite('IRF_br_cr_up',col_header,'Sheet 1','A1');
-    xlswrite('IRF_br_cr_up',row_header,'Sheet 1','A2');
     
 elseif which_country == 2
     
@@ -203,16 +193,6 @@ elseif which_country == 2
     xlswrite('IRF_ch_pcom_up',pcom_up68,'Sheet 1','B2');
     xlswrite('IRF_ch_pcom_up',col_header,'Sheet 1','A1');
     xlswrite('IRF_ch_pcom_up',row_header,'Sheet 1','A2');
-
-    xlswrite('IRF_ch_cr',cr_shock,'Sheet 1','B2');
-    xlswrite('IRF_ch_cr',col_header,'Sheet 1','A1');
-    xlswrite('IRF_ch_cr',row_header,'Sheet 1','A2');
-    xlswrite('IRF_ch_cr_low',cr_low68,'Sheet 1','B2');
-    xlswrite('IRF_ch_cr_low',col_header,'Sheet 1','A1');
-    xlswrite('IRF_ch_cr_low',row_header,'Sheet 1','A2');
-    xlswrite('IRF_ch_cr_up',cr_up68,'Sheet 1','B2');
-    xlswrite('IRF_ch_cr_up',col_header,'Sheet 1','A1');
-    xlswrite('IRF_ch_cr_up',row_header,'Sheet 1','A2');
     
 elseif which_country == 3
     
@@ -246,16 +226,6 @@ elseif which_country == 3
     xlswrite('IRF_col_pcom_up',col_header,'Sheet 1','A1');
     xlswrite('IRF_col_pcom_up',row_header,'Sheet 1','A2');
 
-    xlswrite('IRF_col_cr',cr_shock,'Sheet 1','B2');
-    xlswrite('IRF_col_cr',col_header,'Sheet 1','A1');
-    xlswrite('IRF_col_cr',row_header,'Sheet 1','A2');
-    xlswrite('IRF_col_cr_low',cr_low68,'Sheet 1','B2');
-    xlswrite('IRF_col_cr_low',col_header,'Sheet 1','A1');
-    xlswrite('IRF_col_cr_low',row_header,'Sheet 1','A2');
-    xlswrite('IRF_col_cr_up',cr_up68,'Sheet 1','B2');
-    xlswrite('IRF_col_cr_up',col_header,'Sheet 1','A1');
-    xlswrite('IRF_col_cr_up',row_header,'Sheet 1','A2');
-    
 elseif which_country == 4
     
     xlswrite('IRF_per_wgdp',wgdp_shock,'Sheet 1','B2');
@@ -287,15 +257,5 @@ elseif which_country == 4
     xlswrite('IRF_per_pcom_up',pcom_up68,'Sheet 1','B2');
     xlswrite('IRF_per_pcom_up',col_header,'Sheet 1','A1');
     xlswrite('IRF_per_pcom_up',row_header,'Sheet 1','A2');
-
-    xlswrite('IRF_per_cr',cr_shock,'Sheet 1','B2');
-    xlswrite('IRF_per_cr',col_header,'Sheet 1','A1');
-    xlswrite('IRF_per_cr',row_header,'Sheet 1','A2');
-    xlswrite('IRF_per_cr_low',cr_low68,'Sheet 1','B2');
-    xlswrite('IRF_per_cr_low',col_header,'Sheet 1','A1');
-    xlswrite('IRF_per_cr_low',row_header,'Sheet 1','A2');
-    xlswrite('IRF_per_cr_up',cr_up68,'Sheet 1','B2');
-    xlswrite('IRF_per_cr_up',col_header,'Sheet 1','A1');
-    xlswrite('IRF_per_cr_up',row_header,'Sheet 1','A2');
 
 end

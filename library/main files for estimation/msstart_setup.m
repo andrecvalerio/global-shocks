@@ -95,9 +95,9 @@ end
 
 % defining which VAR will be estimated
 if m == 1 || m == 8
-    var_reg      = [gdp, cpi, wgdp, pcom, vix, cr, exr, intr]; %defining the VAR to be estimated;
+    var_reg      = [gdp, cpi, wgdp, vix, pcom, cr, exr, intr]; %defining the VAR to be estimated;
     %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'),'World GDP','VIX', 'Commodities', 'Country Risk', 'Exchange Rate', 'Interest Rate'}; %variables names
-    varlista = {'GDP','CPI','WGDP','PCOM','VIX','CR','EXR','INTR'};
+    varlista = {'GDP','CPI','WGDP','VIX','PCOM','CR','EXR','INTR'};
 elseif m == 2
     var_reg      = [gdp, cpi, pcom, cr, exr, intr];
     %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'), 'Commodities', 'Country Risk', 'Exchange Rate', 'Interest Rate'};
