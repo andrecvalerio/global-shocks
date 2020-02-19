@@ -198,38 +198,38 @@ msprobg            % obtain error bands
 close all
   
 % plotting the irfs according to which_model is being estimated
-if m == 1  
-    plot_irf
-    plot_irf2
-elseif m == 2
-    plot_irfm2
-    plot_irf2m2
-elseif m == 3
-    plot_irfm3
-    plot_irf2m3     
-elseif m == 4
-    plot_irfm4
-    plot_irf2m4
-elseif m == 5
-    plot_irfm5
-    plot_irf2m5
-elseif m == 6
-    plot_irfm6
-    plot_irf2m6
-elseif m == 7
-    plot_irfm7
-    plot_irf2m7
-elseif m == 8
-    plot_irfm8
-    plot_irf2m8
-elseif m == 9
-    plot_irfm9
-    plot_irf2m9
-end
-close all
+% if m == 1  
+%     plot_irf
+%     plot_irf2
+% elseif m == 2
+%     plot_irfm2
+%     plot_irf2m2
+% elseif m == 3
+%     plot_irfm3
+%     plot_irf2m3     
+% elseif m == 4
+%     plot_irfm4
+%     plot_irf2m4
+% elseif m == 5
+%     plot_irfm5
+%     plot_irf2m5
+% elseif m == 6
+%     plot_irfm6
+%     plot_irf2m6
+% elseif m == 7
+%     plot_irfm7
+%     plot_irf2m7
+% elseif m == 8
+%     plot_irfm8
+%     plot_irf2m8
+% elseif m == 9
+%     plot_irfm9
+%     plot_irf2m9
+% end
+% close all
 
 
 
-fevd % perform forecast error variance decomposition
+fevd2 % perform forecast error variance decomposition
 end
 
