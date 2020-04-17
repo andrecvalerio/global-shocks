@@ -1,19 +1,42 @@
-function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky4(lags,nvar,nexo,indxC0Pres)
+function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky4(lags,nvar,nexo,indxC0Pres,m)
 %January 2016
 % The model:
-%   GDP CPI VIX CR EXR INTR
+%   PCOM CR EXR GDP CPI INTR
+%   WGDP CR EXR GDP CPI INTR
+%   VIX CR EXR GDP CPI INTR
 %
 %   Identification structure: X means unrestricted and columns are
 %   equations
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%   %        GDP CPI PCOM  CR EXR INTR %
-%   % GDP	  X	  X   0    0    0   X  %
-%   % CPI	  0   X   0    0    0   X  %
-%   % PCOM    X	  X   X    X    X   X  %
-%   % CR	  0	  0   0    X    X   X  %
-%   % EXR     0	  0	  0    0    X   X  %
+%   %        PCOM CR EXR  GDP CPI INTR %
+%   % PCOM	  X	  X   X    0    X   X  %
+%   % CR	  0   X   X    0    0   X  %
+%   % EXR     0	  0   X    0    0   X  %
+%   % GDP	  0	  0   0    X    X   X  %
+%   % CPI     0	  0	  0    0    X   X  %
 %   % INTR    0   0	  0    0    0   X  %
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %        WGDP CR EXR  GDP CPI INTR %
+%   % WGDP	  X	  X   X    X    X   X  %
+%   % CR	  0   X   X    0    0   X  %
+%   % EXR     0	  0   X    0    0   X  %
+%   % GDP	  0	  0   0    X    X   X  %
+%   % CPI     0	  0	  0    0    X   X  %
+%   % INTR    0   0	  0    0    0   X  %
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   %        VIX CR EXR  GDP CPI INTR %
+%   % VIX	  X	  X   X    0    0   X  %
+%   % CR	  0   X   X    0    0   X  %
+%   % EXR     0	  0   X    0    0   X  %
+%   % GDP	  0	  0   0    X    X   X  %
+%   % CPI     0	  0	  0    0    X   X  %
+%   % INTR    0   0	  0    0    0   X  %
+%   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %
 %   Lag restrictions only imposed on the international block - PCOM and CR
 %
@@ -83,26 +106,30 @@ Ri = zeros(k,k,nvar);    % for nvar lagged and exogenous equations
 %-------------------------------------------------------------
 
 
-%======== The first equation - GDP
-    Qi(2:6,:,1) = [
+%======== The first equation - PCOM
+    Qi(1:6,:,1) = [
+     0 0 0 0 0 0
      0 1 0 0 0 0
-	 0 0 0 0 0 0
+	 0 0 1 0 0 0
 	 0 0 0 1 0 0
 	 0 0 0 0 1 0
 	 0 0 0 0 0 1
   	];
 
-	%======== The second equation - CPI
-    Qi(4:6,:,2) = [
-	 0 0 0 1 0 0
+	%======== The second equation - CR
+    Qi(1:6,:,2) = [
+	 0 0 0 0 0 0
+     0 0 0 0 0 0
+     0 0 1 0 0 0
+     0 0 0 1 0 0
 	 0 0 0 0 1 0
      0 0 0 0 0 1
      	];
 
-	%======== The third equation - VIX
+	%======== The third equation - EXR
      Qi(1:6,:,3) = [
-     1 0 0 0 0 0
-	 0 1 0 0 0 0
+     0 0 0 0 0 0
+	 0 0 0 0 0 0
 	 0 0 0 0 0 0
 	 0 0 0 1 0 0
 	 0 0 0 0 1 0
@@ -110,26 +137,46 @@ Ri = zeros(k,k,nvar);    % for nvar lagged and exogenous equations
      ];
 
 
-	%======== The fourth equation - CR
-     Qi(1:6,:,4) = [
-     1 0 0 0 0 0
-	 0 1 0 0 0 0
-	 0 0 0 0 0 0
-	 0 0 0 0 0 0
-	 0 0 0 0 1 0
-	 0 0 0 0 0 1
-     	];
+	%======== The fourth equation - GDP
+    if m == 7 
+        Qi(1:6,:,4) = [
+         0 0 0 0 0 0
+         0 1 0 0 0 0
+         0 0 1 0 0 0
+         0 0 0 0 0 0
+         0 0 0 0 1 0
+         0 0 0 0 0 1];
+    else
+         Qi(1:6,:,4) = [
+         1 0 0 0 0 0
+         0 1 0 0 0 0
+         0 0 1 0 0 0
+         0 0 0 0 0 0
+         0 0 0 0 1 0
+         0 0 0 0 0 1
+            ];
+    end
 
-
-   	%======== The fifth equation - EXR
-     Qi(1:6,:,5) = [
-     1 0 0 0 0 0
-	 0 1 0 0 0 0
-	 0 0 0 0 0 0
-	 0 0 0 0 0 0
-	 0 0 0 0 0 0
-	 0 0 0 0 0 1
-     	];
+   	%======== The fifth equation - CPI
+    if m == 8
+        Qi(1:6,:,5) = [
+         1 0 0 0 0 0
+         0 1 0 0 0 0
+         0 0 1 0 0 0
+         0 0 0 0 0 0
+         0 0 0 0 0 0
+         0 0 0 0 0 1
+         ];
+    else 
+         Qi(1:6,:,5) = [
+         0 0 0 0 0 0
+         0 1 0 0 0 0
+         0 0 1 0 0 0
+         0 0 0 0 0 0
+         0 0 0 0 0 0
+         0 0 0 0 0 1
+         ];
+    end
 
    	%======== The sixth equation - INTR
     %%% No change, everything affects interest rate (monetary policy rate)
@@ -137,11 +184,18 @@ Ri = zeros(k,k,nvar);    % for nvar lagged and exogenous equations
  %end
 %-------------------------- Lag restrictions. ------------------------------------------
 if (1)
-  %--- Lag restrictions.:
-  	indxeqn = 1;   %Which equation: GDP
-    nrestrs = 1;  %Number of restrictions.
+  %--- Lag restrictions.
+    indxeqn = 1; % Which equation: PCOM
+ 	nrestrs = (nvar-1)*lags+1;  %Number of restrictions.
+	vars_restr = [2 3 4 5 6];  %Variables that are restricted.
 	blags = zeros(nrestrs,k);
 	cnt = 0;
+	for ki = 1:lags
+	   for kj=vars_restr
+	      cnt = cnt+1;
+	      blags(cnt,nvar*(ki-1)+kj) = 1;
+	   end
+	end
 	%--- Keep constant zero.
 	cnt = cnt+1;
 	blags(cnt,end) = 1;  %Constant = 0.
@@ -151,10 +205,17 @@ if (1)
 	Ri(1:nrestrs,:,indxeqn) = blags;
 
   %--- Lag restrictions.
-  	indxeqn = 2;   %Which equation: CPI
-	nrestrs = 1;  %Number of restrictions.
+	indxeqn = 2;   %Which equation: CR
+	nrestrs = (nvar-2)*lags+1;  %Number of restrictions.
+	vars_restr = [3 4 5 6];  %Variables that are restricted.
 	blags = zeros(nrestrs,k);
 	cnt = 0;
+	for ki = 1:lags
+	   for kj=vars_restr
+	      cnt = cnt+1;
+	      blags(cnt,nvar*(ki-1)+kj) = 1;
+	   end
+	end
 	%--- Keep constant zero.
 	cnt = cnt+1;
 	blags(cnt,end) = 1;  %Constant = 0.
@@ -162,39 +223,25 @@ if (1)
 	   error('Check lagged restrictions in 2nd equation!')
 	end
 	Ri(1:nrestrs,:,indxeqn) = blags;
-
- %--- Lag restrictions.
-    indxeqn = 3; % Which equation: VIX
- 	nrestrs = (nvar-1)*lags+1;  %Number of restrictions.
-	vars_restr = [1 2 4 5 6];  %Variables that are restricted.
+  
+  %--- Lag restrictions.:
+  	indxeqn = 3;   %Which equation: EXR
+    nrestrs = 1;  %Number of restrictions.
 	blags = zeros(nrestrs,k);
 	cnt = 0;
-	for ki = 1:lags
-	   for kj=vars_restr
-	      cnt = cnt+1;
-	      blags(cnt,nvar*(ki-1)+kj) = 1;
-	   end
-	end
 	%--- Keep constant zero.
 	cnt = cnt+1;
 	blags(cnt,end) = 1;  %Constant = 0.
 	if cnt~=nrestrs
-	   error('Check lagged restrictions in 3th equation!')
+	   error('Check lagged restrictions in 3rd equation!')
 	end
 	Ri(1:nrestrs,:,indxeqn) = blags;
 
   %--- Lag restrictions.
-	indxeqn = 4;   %Which equation: CR
-	nrestrs = (nvar-2)*lags+1;  %Number of restrictions.
-	vars_restr = [1 2 5 6];  %Variables that are restricted.
+  	indxeqn = 4;   %Which equation: GDP
+	nrestrs = 1;  %Number of restrictions.
 	blags = zeros(nrestrs,k);
 	cnt = 0;
-	for ki = 1:lags
-	   for kj=vars_restr
-	      cnt = cnt+1;
-	      blags(cnt,nvar*(ki-1)+kj) = 1;
-	   end
-	end
 	%--- Keep constant zero.
 	cnt = cnt+1;
 	blags(cnt,end) = 1;  %Constant = 0.
@@ -204,7 +251,7 @@ if (1)
 	Ri(1:nrestrs,:,indxeqn) = blags;
 
     %--- Lag restrictions.
-	indxeqn = 5;   %Which equation: EXR
+	indxeqn = 5;   %Which equation: CPI
 	nrestrs = 1;  %Number of restrictions.
 	blags = zeros(nrestrs,k);
 	cnt = 0;

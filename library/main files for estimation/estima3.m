@@ -15,141 +15,10 @@ end
 
 if cf ~= 0              % Perform the "pseudo-counterfactual" analisys
     if m == 1
-        which_country = c;
-        model = 'ftd_cholesky';
-
-        msstart_setup
-        msprob
-        msprobg
-        close all
-
-        Bhat(3:5,6)   = 0;
-        Bhat(11:13,6) = 0;
-        Bhat(19:21,6) = 0;
-        Bhat(27:29,6) = 0;
-
-        A0hat(3:5,6)  = 0;
-
-        fevd
-    elseif m == 2
-        which_country = c;
-        model = 'ftd_cholesky2';
-        
-        msstart_setup
-        msprob
-        msprobg
-        close all
-        
-        Bhat(3,4)  = 0;
-        Bhat(9,4)  = 0;
-        Bhat(15,4) = 0;
-        Bhat(21,4) = 0;
-        
-        A0hat(3,4) = 0;
-        
-        fevd 
-    elseif m == 3
-        which_country = c;
-        model = 'ftd_cholesky3';
-        
-        msstart_setup
-        msprob
-        msprobg
-        close all
-        
-        Bhat(3,4)  = 0;
-        Bhat(9,4)  = 0;
-        Bhat(15,4) = 0;
-        Bhat(21,4) = 0;
-        
-        A0hat(3,4) = 0;
-        
-        fevd
-    elseif m == 4
-        which_country = c;
-        model = 'ftd_cholesky4';
-        
-        msstart_setup
-        msprob
-        msprobg
-        close all
-        
-        Bhat(3,4)  = 0;
-        Bhat(9,4)  = 0;
-        Bhat(15,4) = 0;
-        Bhat(21,4) = 0;
-        
-        A0hat(3,4) = 0;
-        
-        fevd
-    elseif m == 5
-        which_country = c;
-        model = 'ftd_cholesky5';
-        
-        msstart_setup
-        msprob
-        msprobg
-        close all
-        
-        Bhat(3:4,5)  = 0;
-        Bhat(10:11,5)  = 0;
-        Bhat(17:18,5) = 0;
-        Bhat(24:25,5) = 0;
-        
-        A0hat(3:4,5) = 0;
-        
-        fevd
-    elseif m == 6
-        which_country = c;
-        model = 'ftd_cholesky6';
-        
-        msstart_setup
-        msprob
-        msprobg
-        close all
-        
-        Bhat(3:4,5)  = 0;
-        Bhat(10:11,5)  = 0;
-        Bhat(17:18,5) = 0;
-        Bhat(24:25,5) = 0;
-        
-        A0hat(3:4,5) = 0;
-        
-        fevd
-    elseif m == 7
-        which_country = c;
-        model = 'ftd_cholesky7';
-        
-        msstart_setup
-        msprob
-        msprobg
-        close all
-        
-        Bhat(3:4,5)  = 0;
-        Bhat(10:11,5)  = 0;
-        Bhat(17:18,5) = 0;
-        Bhat(24:25,5) = 0;
-        
-        A0hat(3:4,5) = 0;
-        
-        fevd
-    elseif m == 8
-        which_country = c;
-        model = 'ftd_cholesky8';
-
-        msstart_setup
-        msprob
-        msprobg
-        close all
-
-        Bhat(3:5,6)   = 0;
-        Bhat(11:13,6) = 0;
-        Bhat(19:21,6) = 0;
-        Bhat(27:29,6) = 0;
-
-        A0hat(3:5,6)  = 0;
-
-        fevd
+        % Calling routine that estimate counterfactual model
+        counterfactual
+    else
+        error('Counterfactual analysis restricted to the benchmark model. See readme.');
     end
 else
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -174,18 +43,10 @@ if m == 1
     model = 'ftd_cholesky';     % Function that imposes contemporaneous and
 elseif m == 2                   % lag restrictions on each model
     model = 'ftd_cholesky2';
-elseif m == 3
+elseif m == 3 || m == 5 || m == 6
     model = 'ftd_cholesky3';
-elseif m == 4
+elseif m == 4 || m == 7 || m == 8
     model = 'ftd_cholesky4';
-elseif m == 5
-    model = 'ftd_cholesky5';
-elseif m == 6
-    model = 'ftd_cholesky6';
-elseif m == 7
-    model = 'ftd_cholesky7';
-elseif m == 8
-    model = 'ftd_cholesky8';
 elseif m == 9
     model = 'ftd_cholesky9';
 end
@@ -196,40 +57,7 @@ msstart_setup      % file that make all appropriate settings for estimation
 msprob             % estimation 
 msprobg            % obtain error bands
 close all
-  
-% plotting the irfs according to which_model is being estimated
-% if m == 1  
-%     plot_irf
-%     plot_irf2
-% elseif m == 2
-%     plot_irfm2
-%     plot_irf2m2
-% elseif m == 3
-%     plot_irfm3
-%     plot_irf2m3     
-% elseif m == 4
-%     plot_irfm4
-%     plot_irf2m4
-% elseif m == 5
-%     plot_irfm5
-%     plot_irf2m5
-% elseif m == 6
-%     plot_irfm6
-%     plot_irf2m6
-% elseif m == 7
-%     plot_irfm7
-%     plot_irf2m7
-% elseif m == 8
-%     plot_irfm8
-%     plot_irf2m8
-% elseif m == 9
-%     plot_irfm9
-%     plot_irf2m9
-% end
-% close all
-
-
-
-fevd2 % perform forecast error variance decomposition
+irfs               % obtain IRF matrix
+fevd               % perform forecast error variance decomposition
 end
 

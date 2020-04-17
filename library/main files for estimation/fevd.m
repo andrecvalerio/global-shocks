@@ -86,329 +86,340 @@ for i = 1:nvar
         VD(:,(i-1)*nvar+1:i*nvar) = DV(:,:,i);
     end
 end
-if m == 1
-    if cf ~= 0
-       if which_country == 1
-        xlswrite('VD_br_cf',VD,'Sheet 1','B2');
-        xlswrite('VD_br_cf',col_header,'Sheet 1','A1');
-        xlswrite('VD_br_cf',row_header,'Sheet 1','A2');
-    elseif which_country == 2
-        xlswrite('VD_ch_cf',VD,'Sheet 1','B2');
-        xlswrite('VD_ch_cf',col_header,'Sheet 1','A1');
-        xlswrite('VD_ch_cf',row_header,'Sheet 1','A2');
-    elseif which_country == 3
-        xlswrite('VD_col_cf',VD,'Sheet 1','B2');
-        xlswrite('VD_col_cf',col_header,'Sheet 1','A1');
-        xlswrite('VD_col_cf',row_header,'Sheet 1','A2');
-    elseif which_country == 4
-        xlswrite('VD_per_cf',VD,'Sheet 1','B2');
-        xlswrite('VD_per_cf',col_header,'Sheet 1','A1');
-        xlswrite('VD_per_cf',row_header,'Sheet 1','A2');
-        end 
-    else
-        if which_country == 1
-            xlswrite('VD_br',VD,'Sheet 1','B2');
-            xlswrite('VD_br',col_header,'Sheet 1','A1');
-            xlswrite('VD_br',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch',VD,'Sheet 1','B2');
-            xlswrite('VD_ch',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col',VD,'Sheet 1','B2');
-            xlswrite('VD_col',col_header,'Sheet 1','A1');
-            xlswrite('VD_col',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per',VD,'Sheet 1','B2');
-            xlswrite('VD_per',col_header,'Sheet 1','A1');
-            xlswrite('VD_per',row_header,'Sheet 1','A2');
-        end
-    end
-elseif m == 2
-    if cf ~= 0
-        if which_country == 1
-            xlswrite('VD_br_m2_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m2_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m2_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m2_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m2_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m2_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m2_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m2_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m2_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m2_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m2_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m2_cf',row_header,'Sheet 1','A2');
-        end
-    else
-        if which_country == 1
-            xlswrite('VD_br_m2',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m2',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m2',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m2',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m2',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m2',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m2',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m2',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m2',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m2',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m2',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m2',row_header,'Sheet 1','A2');
-        end
-    end
-elseif m == 3
-    if cf ~= 0
-        if which_country == 1
-            xlswrite('VD_br_m3_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m3_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m3_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m3_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m3_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m3_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m3_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m3_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m3_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m3_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m3_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m3_cf',row_header,'Sheet 1','A2');
-        end
-    else
-        if which_country == 1
-            xlswrite('VD_br_m3',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m3',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m3',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m3',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m3',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m3',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m3',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m3',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m3',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m3',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m3',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m3',row_header,'Sheet 1','A2');
-        end
-    end
-elseif m == 4
-    if cf ~= 0
-        if which_country == 1
-            xlswrite('VD_br_m4_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m4_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m4_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m4_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m4_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m4_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m4_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m4_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m4_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m4_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m4_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m4_cf',row_header,'Sheet 1','A2');
-        end
-    else
-        if which_country == 1
-            xlswrite('VD_br_m4',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m4',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m4',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m4',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m4',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m4',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m4',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m4',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m4',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m4',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m4',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m4',row_header,'Sheet 1','A2');
-        end
-    end
-elseif m == 5
-    if cf ~= 0
-        if which_country == 1
-            xlswrite('VD_br_m5_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m5_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m5_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m5_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m5_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m5_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m5_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m5_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m5_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m5_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m5_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m5_cf',row_header,'Sheet 1','A2');
-        end
-    else
-        if which_country == 1
-            xlswrite('VD_br_m5',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m5',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m5',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m5',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m5',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m5',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m5',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m5',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m5',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m5',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m5',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m5',row_header,'Sheet 1','A2');
-        end
-    end
-elseif m == 6
-    if cf ~= 0
-        if which_country == 1
-            xlswrite('VD_br_m6_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m6_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m6_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m6_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m6_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m6_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m6_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m6_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m6_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m6_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m6_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m6_cf',row_header,'Sheet 1','A2');
-        end
-    else
-        if which_country == 1
-            xlswrite('VD_br_m6',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m6',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m6',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m6',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m6',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m6',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m6',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m6',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m6',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m6',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m6',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m6',row_header,'Sheet 1','A2');
-        end
-    end
-elseif m == 7
-    if cf ~= 0
-        if which_country == 1
-            xlswrite('VD_br_m7_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m7_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m7_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m7_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m7_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m7_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m7_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m7_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m7_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m7_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m7_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m7_cf',row_header,'Sheet 1','A2');
-        end
-    else
-        if which_country == 1
-            xlswrite('VD_br_m7',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m7',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m7',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m7',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m7',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m7',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m7',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m7',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m7',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m7',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m7',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m7',row_header,'Sheet 1','A2');
-        end
-    end
-elseif m == 8
-    if cf ~= 0
-        if which_country == 1
-            xlswrite('VD_br_m8_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m8_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m8_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m8_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m8_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m8_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m8_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m8_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m8_cf',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m8_cf',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m8_cf',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m8_cf',row_header,'Sheet 1','A2');
-        end
-    else
-        if which_country == 1
-            xlswrite('VD_br_m8',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m8',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m8',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m8',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m8',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m8',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m8',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m8',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m8',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m8',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m8',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m8',row_header,'Sheet 1','A2');
-        end
-    end
-elseif m == 9
-    if which_country == 1
-            xlswrite('VD_br_m8',VD,'Sheet 1','B2');
-            xlswrite('VD_br_m8',col_header,'Sheet 1','A1');
-            xlswrite('VD_br_m8',row_header,'Sheet 1','A2');
-        elseif which_country == 2
-            xlswrite('VD_ch_m8',VD,'Sheet 1','B2');
-            xlswrite('VD_ch_m8',col_header,'Sheet 1','A1');
-            xlswrite('VD_ch_m8',row_header,'Sheet 1','A2');
-        elseif which_country == 3
-            xlswrite('VD_col_m8',VD,'Sheet 1','B2');
-            xlswrite('VD_col_m8',col_header,'Sheet 1','A1');
-            xlswrite('VD_col_m8',row_header,'Sheet 1','A2');
-        elseif which_country == 4
-            xlswrite('VD_per_m8',VD,'Sheet 1','B2');
-            xlswrite('VD_per_m8',col_header,'Sheet 1','A1');
-            xlswrite('VD_per_m8',row_header,'Sheet 1','A2');
-     end
-end
-    
 
-     
+% saving irfs according to which model and which country is being estimated
+if cf ~= 0
+    name2 = namec(which_country,'_VD_cf_m',string(m));
+else
+   name2 = namec(which_country,'_VD_m',string(m));
+end
+xlswrite(name2,VD,'Sheet 1','B2');
+xlswrite(name2,col_header,'Sheet 1','A1');
+xlswrite(name2,row_header,'Sheet 1','A2');
+
+% if m == 1
+%     if cf ~= 0
+%        if which_country == 1
+%         xlswrite('VD_br_cf',VD,'Sheet 1','B2');
+%         xlswrite('VD_br_cf',col_header,'Sheet 1','A1');
+%         xlswrite('VD_br_cf',row_header,'Sheet 1','A2');
+%     elseif which_country == 2
+%         xlswrite('VD_ch_cf',VD,'Sheet 1','B2');
+%         xlswrite('VD_ch_cf',col_header,'Sheet 1','A1');
+%         xlswrite('VD_ch_cf',row_header,'Sheet 1','A2');
+%     elseif which_country == 3
+%         xlswrite('VD_col_cf',VD,'Sheet 1','B2');
+%         xlswrite('VD_col_cf',col_header,'Sheet 1','A1');
+%         xlswrite('VD_col_cf',row_header,'Sheet 1','A2');
+%     elseif which_country == 4
+%         xlswrite('VD_per_cf',VD,'Sheet 1','B2');
+%         xlswrite('VD_per_cf',col_header,'Sheet 1','A1');
+%         xlswrite('VD_per_cf',row_header,'Sheet 1','A2');
+%         end 
+%     else
+%         if which_country == 1
+%             xlswrite('VD_br',VD,'Sheet 1','B2');
+%             xlswrite('VD_br',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col',VD,'Sheet 1','B2');
+%             xlswrite('VD_col',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per',VD,'Sheet 1','B2');
+%             xlswrite('VD_per',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per',row_header,'Sheet 1','A2');
+%         end
+%     end
+% elseif m == 2
+%     if cf ~= 0
+%         if which_country == 1
+%             xlswrite('VD_br_m2_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m2_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m2_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m2_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m2_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m2_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m2_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m2_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m2_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m2_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m2_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m2_cf',row_header,'Sheet 1','A2');
+%         end
+%     else
+%         if which_country == 1
+%             xlswrite('VD_br_m2',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m2',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m2',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m2',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m2',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m2',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m2',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m2',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m2',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m2',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m2',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m2',row_header,'Sheet 1','A2');
+%         end
+%     end
+% elseif m == 3
+%     if cf ~= 0
+%         if which_country == 1
+%             xlswrite('VD_br_m3_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m3_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m3_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m3_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m3_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m3_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m3_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m3_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m3_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m3_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m3_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m3_cf',row_header,'Sheet 1','A2');
+%         end
+%     else
+%         if which_country == 1
+%             xlswrite('VD_br_m3',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m3',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m3',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m3',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m3',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m3',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m3',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m3',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m3',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m3',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m3',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m3',row_header,'Sheet 1','A2');
+%         end
+%     end
+% elseif m == 4
+%     if cf ~= 0
+%         if which_country == 1
+%             xlswrite('VD_br_m4_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m4_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m4_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m4_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m4_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m4_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m4_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m4_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m4_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m4_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m4_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m4_cf',row_header,'Sheet 1','A2');
+%         end
+%     else
+%         if which_country == 1
+%             xlswrite('VD_br_m4',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m4',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m4',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m4',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m4',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m4',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m4',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m4',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m4',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m4',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m4',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m4',row_header,'Sheet 1','A2');
+%         end
+%     end
+% elseif m == 5
+%     if cf ~= 0
+%         if which_country == 1
+%             xlswrite('VD_br_m5_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m5_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m5_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m5_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m5_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m5_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m5_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m5_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m5_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m5_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m5_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m5_cf',row_header,'Sheet 1','A2');
+%         end
+%     else
+%         if which_country == 1
+%             xlswrite('VD_br_m5',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m5',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m5',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m5',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m5',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m5',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m5',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m5',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m5',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m5',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m5',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m5',row_header,'Sheet 1','A2');
+%         end
+%     end
+% elseif m == 6
+%     if cf ~= 0
+%         if which_country == 1
+%             xlswrite('VD_br_m6_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m6_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m6_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m6_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m6_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m6_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m6_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m6_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m6_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m6_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m6_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m6_cf',row_header,'Sheet 1','A2');
+%         end
+%     else
+%         if which_country == 1
+%             xlswrite('VD_br_m6',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m6',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m6',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m6',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m6',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m6',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m6',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m6',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m6',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m6',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m6',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m6',row_header,'Sheet 1','A2');
+%         end
+%     end
+% elseif m == 7
+%     if cf ~= 0
+%         if which_country == 1
+%             xlswrite('VD_br_m7_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m7_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m7_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m7_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m7_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m7_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m7_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m7_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m7_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m7_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m7_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m7_cf',row_header,'Sheet 1','A2');
+%         end
+%     else
+%         if which_country == 1
+%             xlswrite('VD_br_m7',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m7',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m7',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m7',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m7',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m7',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m7',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m7',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m7',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m7',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m7',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m7',row_header,'Sheet 1','A2');
+%         end
+%     end
+% elseif m == 8
+%     if cf ~= 0
+%         if which_country == 1
+%             xlswrite('VD_br_m8_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m8_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m8_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m8_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m8_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m8_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m8_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m8_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m8_cf',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m8_cf',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m8_cf',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m8_cf',row_header,'Sheet 1','A2');
+%         end
+%     else
+%         if which_country == 1
+%             xlswrite('VD_br_m8',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m8',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m8',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m8',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m8',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m8',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m8',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m8',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m8',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m8',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m8',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m8',row_header,'Sheet 1','A2');
+%         end
+%     end
+% elseif m == 9
+%     if which_country == 1
+%             xlswrite('VD_br_m8',VD,'Sheet 1','B2');
+%             xlswrite('VD_br_m8',col_header,'Sheet 1','A1');
+%             xlswrite('VD_br_m8',row_header,'Sheet 1','A2');
+%         elseif which_country == 2
+%             xlswrite('VD_ch_m8',VD,'Sheet 1','B2');
+%             xlswrite('VD_ch_m8',col_header,'Sheet 1','A1');
+%             xlswrite('VD_ch_m8',row_header,'Sheet 1','A2');
+%         elseif which_country == 3
+%             xlswrite('VD_col_m8',VD,'Sheet 1','B2');
+%             xlswrite('VD_col_m8',col_header,'Sheet 1','A1');
+%             xlswrite('VD_col_m8',row_header,'Sheet 1','A2');
+%         elseif which_country == 4
+%             xlswrite('VD_per_m8',VD,'Sheet 1','B2');
+%             xlswrite('VD_per_m8',col_header,'Sheet 1','A1');
+%             xlswrite('VD_per_m8',row_header,'Sheet 1','A2');
+%      end
+% end
+%     
+% 
+%      

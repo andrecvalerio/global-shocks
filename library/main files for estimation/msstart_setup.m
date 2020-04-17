@@ -57,22 +57,7 @@ elseif which_country == 3
     pcom = dado(:,5);
     cr   = dado(:,6);
     exr  = dado(:,7);
-    intr = dado(:,8);
-                
-elseif which_country == 5
-    load mex.txt;
-    dado = mex;
-    clear mex;
-    
-    var_names = {'gdp', 'cpi', 'wgdp', 'vix', 'pcom', 'cr', 'exr', 'intr'}; %variable names
-    gdp  = dado(:,1); %defining the variables
-    cpi  = dado(:,2);
-    wgdp = dado(:,3);
-    vix  = dado(:,4);
-    pcom = dado(:,5);
-    cr   = dado(:,6);
-    exr  = dado(:,7);
-    intr = dado(:,8);
+    intr = dado(:,8);               
                 
 elseif which_country == 4
     load peru.txt;
@@ -94,42 +79,28 @@ end
 %%%% END OF LOADING DATA
 
 % defining which VAR will be estimated
-if m == 1 || m == 8
-    %var_reg      = [gdp, cpi, kilian3, vix, pcom, cr, exr, intr]; %defining the VAR to be estimated;
-    var_reg = [wgdp,vix,pcom,cr,exr,gdp,cpi,intr];
-    %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'),'World GDP','VIX', 'Commodities', 'Country Risk', 'Exchange Rate', 'Interest Rate'}; %variables names
+if m == 1 || m == 2 || m == 9
+    var_reg  = [wgdp, vix, pcom, cr, exr, gdp, cpi, intr];
     varlista = {'WGDP','VIX','PCOM','CR','EXR','GDP','CPI','INTR'};
-    %varlista = {'GDP','CPI','WGDP','VIX','PCOM','CR','EXR','INTR'};
-elseif m == 2
-    var_reg      = [gdp, cpi, pcom, cr, exr, intr];
-    %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'), 'Commodities', 'Country Risk', 'Exchange Rate', 'Interest Rate'};
-    varlista = {'GDP','CPI','PCOM','CR','EXR','INTR'};
 elseif m == 3
-    var_reg      = [gdp, cpi, wgdp, cr, exr, intr];
-    %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'), 'World GDP', 'Country Risk', 'Exchange Rate', 'Interest Rate'};
-    varlista = {'GDP','CPI','WGDP','CR','EXR','INTR'};
-elseif m == 4
-    var_reg      = [gdp, cpi, vix, cr, exr, intr];
-    %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'), 'VIX', 'Country Risk', 'Exchange Rate', 'Interest Rate'};
-    varlista = {'GDP','CPI','VIX','CR','EXR','INTR'};
+    var_reg  = [wgdp, pcom, cr, exr, gdp, cpi, intr];
+    varlista = {'WGDP','PCOM','CR','EXR','GDP','CPI','INTR'};
+elseif m == 4 
+    var_reg  = [pcom, cr, exr, gdp, cpi, intr];
+    varlista = {'PCOM','CR','EXR','GDP','CPI','INTR'};
 elseif m == 5
-    var_reg      = [gdp, cpi, wgdp, pcom, cr, exr, intr];
-    %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'),'World GDP', 'Commodities', 'Country Risk', 'Exchange Rate', 'Interest Rate'};
-    varlista = {'GDP','CPI','WGDP','PCOM','CR','EXR','INTR'};
+    var_reg  = [wgdp, vix, cr, exr, gdp, cpi, intr];
+    varlista = {'WGDP','VIX','CR','EXR','GDP','CPI','INTR'};
 elseif m == 6
-    var_reg      = [gdp, cpi, vix, pcom, cr, exr, intr];
-    %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'),'VIX', 'Commodities', 'Country Risk', 'Exchange Rate', 'Interest Rate'};
-    varlista = {'GDP','CPI','VIX','PCOM','CR','EXR','INTR'};
+    var_reg  = [vix, pcom, cr, exr, gdp, cpi, intr];
+    varlista = {'VIX','PCOM','CR','EXR','GDP','CPI','INTR'};
 elseif m == 7
-    var_reg      = [gdp, cpi, wgdp, vix, cr, exr, intr];
-    %varlista = {namec(which_country, ' GDP'), namec(which_country, ' CPI'),'World GDP', 'VIX', 'Country Risk', 'Exchange Rate', 'Interest Rate'};
-    varlista = {'GDP','CPI','WGDP','VIX','CR','EXR','INTR'};
-elseif m == 9
-    var_reg      = [gdp, cpi, wgdp, pcom, vix, cr, exr, intr]; %defining the VAR to be estimated;
-    varlista = {'GDP','CPI','WGDP','PCOM','VIX','CR','EXR','INTR'};
+    var_reg  = [wgdp, cr, exr, gdp, cpi, intr];
+    varlista = {'WGDP','CR','EXR','GDP','CPI','INTR'};
+elseif m == 8
+    var_reg  = [vix, cr, exr, gdp, cpi, intr];
+    varlista = {'VIX','CR','EXR','GDP','CPI','INTR'};
 end
-% namec is a function created to automatize the naming process for each
-% country
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -225,13 +196,13 @@ indxC0Pres = 0;   % 1: cross-A0-and-A+ restrictions; 0: idfile_const is all we h
 Rform = 0;  % 1: contemporaneous recursive reduced form; 0: restricted (non-recursive) form
 Pseudo = 0;  % 1: Pseudo forecasts; 0: real time forecasts
 indxPrior = 1;  % 1: Standard Sims-Zha Bayesian prior; 0: no prior
-indxDummy = indxPrior;  % 1: add dummy observations to the data; 0: no dummy added.
+indxDummy = 0;%indxPrior;  % 1: add dummy observations to the data; 0: no dummy added.
 ndobs = 0;  % No dummy observations for xtx, phi, fss, xdatae, etc.  Dummy observations are used as an explicit prior in fn_rnrprior_covres_dobs.m.
-%if indxDummy
-%   ndobs=nvar+1;         % number of dummy observations
-%else
-%   ndobs=0;    % no dummy observations
-%end
+% if indxDummy
+%    ndobs=nvar+1;         % number of dummy observations
+% else
+%    ndobs=0;    % no dummy observations
+% end
 %=== The following mu is effective only if indxPrior==1.
 mu = zeros(6,1);   % hyperparameters
 mu(1) = 1;
@@ -239,7 +210,7 @@ mu(2) = 0.5;
 mu(3) = 0.1;
 mu(4) = 1.0;
 mu(5) = 1.0;
-mu(6) = 0;%1.0;
+mu(6) = 1.0;
 %--- Default value.
 %mu(1) = 1;
 %mu(2) = 0.5;

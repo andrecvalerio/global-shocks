@@ -261,7 +261,7 @@ if indxEstima
    ye = [dateswd y];
 
    %* Obtain linear restrictions
-   eval(['[Ui,Vi,n0,np,ixmC0Pres] = ' idfile_const '(lags,nvar,nexo,indxC0Pres);']) %It is calling ftd_cholesky.m, where the restrictions are imposed
+   eval(['[Ui,Vi,n0,np,ixmC0Pres] = ' idfile_const '(lags,nvar,nexo,indxC0Pres,m);']) %It is calling ftd_cholesky.m, where the restrictions are imposed
    if min(n0)==0
       disp(' ')
       warning('A0: restrictions in dlrprior.m give no free parameter in one of equations')

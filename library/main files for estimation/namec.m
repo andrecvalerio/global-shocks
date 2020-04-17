@@ -1,8 +1,9 @@
-function x = namec(which_country, w) 
+function x = namec(which_country, w, z) 
 % this function facilitates the labelling process
 % which_country is defined by the user in var_est
 % w means word, it is the word that we want to paste, in this context, the
-% word is already defined in msstart_setup
+% word is already defined in msstart_setup. z is another word you want to
+% use
 if which_country == 1                
     y = 'Brazil';
 elseif which_country == 2
@@ -14,5 +15,5 @@ elseif which_country == 5
 elseif which_country == 4
     y = 'Peru';
 end
-x = strcat(y, w);
+x = strcat(y, w, z);
 
