@@ -5,7 +5,7 @@ function var_est3(m,c,cf)
 % m determines which model will be estimated
 % c determines which country's data will be used
 % cf determines if the "pseudo-counterfactual" analysis will be made
-% m assumes values from 0 to 8
+% m assumes values from 0 to 9
     % m = 0 -> estimate all eight models at once
     % m = 1 -> estimate the benchmark model
     % m = 2 -> full model with alternative identification

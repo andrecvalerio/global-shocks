@@ -1,4 +1,4 @@
-function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky(lags,nvar,nexo,indxC0Pres,m)
+function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky(lags,nvar,nexo,indxC0Pres)
 %January 2016
 % The model:
 %   WGDP VIX PCOM CR EXR GDP CPI INTR
@@ -9,9 +9,9 @@ function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky(lags,nvar,nexo,indxC0Pres,m)
 %   affects GDP contemporaneously.
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 %   %        WGDP VIX PCOM CR EXR  GDP CPI INTR %
-%   % WGDP	  X	  X   X    X   X    X   X   X   %
+%   % WGDP	  X	  X   X    X   X    0   0   X   %
 %   % VIX	  0   X   X    X   X    0   0   X   %
-%   % PCOM    0   0   X    X   X    0   X   X   %
+%   % PCOM    0   0   X    X   X    0   0   X   %
 %   % CR      0   0   0    X   X    0   0   X   %
 %   % EXR     0	  0   0    0   X    0   0   X   %
 %   % GDP	  0	  0   0    0   0    X   X   X   %
@@ -153,7 +153,7 @@ Ri = zeros(k,k,nvar);    % for nvar lagged and exogenous equations
 
 %======== The sixth equation - GDP
     Qi(1:8,:,6) = [
-     0 0 0 0 0 0 0 0 % WGDP
+     1 0 0 0 0 0 0 0 % WGDP
      0 1 0 0 0 0 0 0 % VIX
 	 0 0 1 0 0 0 0 0 % PCOM
      0 0 0 1 0 0 0 0 % CR
@@ -165,9 +165,9 @@ Ri = zeros(k,k,nvar);    % for nvar lagged and exogenous equations
 
 %======== The seventh equation - CPI
     Qi(1:8,:,7) = [
-     0 0 0 0 0 0 0 0 % WGDP
+     1 0 0 0 0 0 0 0 % WGDP
      0 1 0 0 0 0 0 0 % VIX
-	 0 0 0 0 0 0 0 0 % PCOM
+	 0 0 1 0 0 0 0 0 % PCOM
      0 0 0 1 0 0 0 0 % CR
 	 0 0 0 0 1 0 0 0 % EXR
 	 0 0 0 0 0 0 0 0 % GDP

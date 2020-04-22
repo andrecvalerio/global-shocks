@@ -121,11 +121,11 @@ irfs <- irfs %>%
                                   )
   ) %>% 
   dplyr::mutate(Variable = recode_factor(Variable,
-                                         "WGDP" = "World Product",
+                                         "WGDP" = "World GDP",
                                          "VIX" = "VIX",
                                          "PCOM" = "Commodity Prices",
-                                         "GDP" = "Product",
-                                         "CPI" = "Inflation",
+                                         "GDP" = "GDP",
+                                         "CPI" = "CPI",
                                          "CR" = "Country Risk",
                                          "EXR" = "Exchange Rate",
                                          "INTR" = "Interest Rate"
@@ -309,7 +309,7 @@ irfs %>% dplyr::filter(Model == "Model 1" |
                                )
                 ) %>% 
   dplyr::filter(Shock == "Positive shock in WDEM") %>% 
-  dplyr::filter(Variable != "World Product" &
+  dplyr::filter(Variable != "World GDP" &
                   Variable != "VIX" &
                   Variable != "Commodity Prices" &
                   Variable != "Country Risk"
@@ -372,7 +372,7 @@ irfs %>% dplyr::filter(Model == "Model 1" |
                                )
                 ) %>% 
   dplyr::filter(Shock == "Negative shock in WUNC") %>% 
-  dplyr::filter(Variable != "World Product" &
+  dplyr::filter(Variable != "World GDP" &
                   Variable != "VIX" &
                   Variable != "Commodity Prices" &
                   Variable != "Country Risk"
@@ -436,7 +436,7 @@ irfs %>% dplyr::filter(Model == "Model 1" |
                                )
                 ) %>% 
   dplyr::filter(Shock == "Positive shock in WSUP") %>% 
-  dplyr::filter(Variable != "World Product" &
+  dplyr::filter(Variable != "World GDP" &
                   Variable != "VIX" &
                   Variable != "Commodity Prices" &
                   Variable != "Country Risk"
@@ -500,7 +500,7 @@ irfs %>% dplyr::filter(Model == "Model 1" |
                                )
                 ) %>% 
   dplyr::filter(Shock == "Negative shock in WUNC") %>% 
-  dplyr::filter(Variable != "World Product" &
+  dplyr::filter(Variable != "World GDP" &
                   Variable != "VIX" &
                   Variable != "Commodity Prices" &
                   Variable != "Country Risk"

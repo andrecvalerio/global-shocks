@@ -9,15 +9,15 @@ plot_fevd <- function(m, full_gdp = 0, comp = 0, intl = 0) {
       ) {
     
     fevd %>% dplyr::filter(Model == m) %>% 
-      dplyr::filter(Variable != "World Product" &
+      dplyr::filter(Variable != "World GDP" &
                       Variable != "VIX" & 
                       Variable != "Commodity Prices"
                     ) %>% 
       dplyr::filter(if (Model == "Model 0") Variable != "Country Risk" 
                     else Variable == "Country Risk" | 
                       Variable == "Exchange Rate" | 
-                      Variable == "Product" | 
-                      Variable == "Inflation" | 
+                      Variable == "GDP" | 
+                      Variable == "CPI" | 
                       Variable == "Interest Rate"
                     ) %>% 
       dplyr::filter(Shock == "WDEM" |
@@ -120,7 +120,7 @@ plot_fevd <- function(m, full_gdp = 0, comp = 0, intl = 0) {
                                           "MP"   = "Monetary Policy"
                                           )
                     ) %>% 
-      dplyr::filter(Variable == "Product" & 
+      dplyr::filter(Variable == "GDP" & 
                       Model == m
                     ) %>% 
       dplyr::filter(Horizon == 4 | 
@@ -219,7 +219,7 @@ plot_fevd <- function(m, full_gdp = 0, comp = 0, intl = 0) {
                     sep=""
                     )
       
-      tmp <- fevd %>% dplyr::filter(Variable != "World Product" & 
+      tmp <- fevd %>% dplyr::filter(Variable != "World GDP" & 
                                       Variable != "VIX" & 
                                       Variable != "Commodity Prices" & 
                                       Variable != "Country Risk"
@@ -324,7 +324,7 @@ plot_fevd <- function(m, full_gdp = 0, comp = 0, intl = 0) {
           dplyr::filter(Model == "Model 1" | 
                           Model == "Model 0"
                         ) %>% 
-          dplyr::filter(Variable != "World Product" &
+          dplyr::filter(Variable != "World GDP" &
                           Variable != "VIX" &
                           Variable != "Commodity Prices" &
                           Variable != "Country Risk"
@@ -482,7 +482,7 @@ plot_fevd <- function(m, full_gdp = 0, comp = 0, intl = 0) {
                     sep=""
                     )
       
-      tmp <- fevd %>% dplyr::filter(Variable != "World Product" & 
+      tmp <- fevd %>% dplyr::filter(Variable != "World GDP" & 
                                       Variable != "VIX" & 
                                       Variable != "Commodity Prices" & 
                                       Variable != "Country Risk"
@@ -585,7 +585,7 @@ plot_fevd <- function(m, full_gdp = 0, comp = 0, intl = 0) {
                           Model == "Model 3" |
                           Model == "Model 4"
                         ) %>% 
-          dplyr::filter(Variable != "World Product" &
+          dplyr::filter(Variable != "World GDP" &
                           Variable != "VIX" &
                           Variable != "Commodity Prices" &
                           Variable != "Country Risk"
@@ -783,12 +783,12 @@ plot_fevd <- function(m, full_gdp = 0, comp = 0, intl = 0) {
 # International bloc ------------------------------------------------------
 
     fevd %>% dplyr::filter(Country == "Brazil") %>% 
-      dplyr::filter(Variable == "World Product" | 
+      dplyr::filter(Variable == "World GDP" | 
                       Variable == "VIX" | 
                       Variable == "Commodity Prices"
                     ) %>% 
       dplyr::mutate(Variable = factor(Variable,
-                                      levels = c("World Product",
+                                      levels = c("World GDP",
                                                  "Commodity Prices",
                                                  "VIX"
                                                  )

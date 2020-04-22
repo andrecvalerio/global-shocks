@@ -6,7 +6,7 @@ plot_irf <- function(m, shock, intl = 0) {
   if (intl != 0) {
     
     irfs %>% dplyr::filter(Model == m) %>% 
-      dplyr::filter(Variable == "World Product" |
+      dplyr::filter(Variable == "World GDP" |
                       Variable == "VIX" |
                       Variable == "Commodity Prices"
                     ) %>% 
@@ -79,7 +79,7 @@ plot_irf <- function(m, shock, intl = 0) {
   } else {
     
     irfs %>% dplyr::filter(Model == m) %>% 
-      dplyr::filter(Variable != "World Product" & 
+      dplyr::filter(Variable != "World GDP" & 
                       Variable != "VIX" & 
                       Variable != "Commodity Prices"
                     ) %>% 

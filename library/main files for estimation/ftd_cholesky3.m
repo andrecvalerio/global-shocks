@@ -1,4 +1,4 @@
-function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky3(lags,nvar,nexo,indxC0Pres,m)
+function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky3(lags,nvar,nexo,indxC0Pres)
 %January 2016
 % The models
 %   WGDP PCOM CR EXR GDP CPI INTR
@@ -9,8 +9,8 @@ function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky3(lags,nvar,nexo,indxC0Pres,m)
 %   equations
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   %        WGDP PCOM CR  EXR  GDP CPI INTR %
-%   % WGDP	  X	  X    X    X    X   X   X   %
-%   % PCOM	  0   X    X    X    0   X   X   %
+%   % WGDP	  X	  X    X    X    0   0   X   %
+%   % PCOM	  0   X    X    X    0   0   X   %
 %   % CR      0   0    X    X    0   0   X   %
 %   % EXR     0	  0    0    X    0   0   X   %
 %   % GDP	  0	  0    0    0    X   X   X   %
@@ -20,7 +20,7 @@ function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky3(lags,nvar,nexo,indxC0Pres,m)
 %
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   %        WGDP VIX CR  EXR  GDP CPI INTR %
-%   % WGDP	  X	  X    X    X    X   X   X   %
+%   % WGDP	  X	  X    X    X    0   0   X   %
 %   % VIX	  0   X    X    X    0   0   X   %
 %   % CR      0   0    X    X    0   0   X   %
 %   % EXR     0	  0    0    X    0   0   X   %
@@ -32,7 +32,7 @@ function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky3(lags,nvar,nexo,indxC0Pres,m)
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   %        VIX PCOM CR  EXR  GDP CPI INTR %
 %   % VIX	  X	  X    X    X    0   0   X   %
-%   % PCOM	  0   X    X    X    0   X   X   %
+%   % PCOM	  0   X    X    X    0   0   X   %
 %   % CR      0   0    X    X    0   0   X   %
 %   % EXR     0	  0    0    X    0   0   X   %
 %   % GDP	  0	  0    0    0    X   X   X   %
@@ -159,9 +159,8 @@ Ri = zeros(k,k,nvar);    % for nvar lagged and exogenous equations
 
 
 %======== The fifth equation - GDP
-if m == 6
     Qi(1:7,:,5) = [
-     1 0 0 0 0 0 0 % VIX
+     1 0 0 0 0 0 0 % WGDP/VIX
      0 1 0 0 0 0 0 % PCOM
 	 0 0 1 0 0 0 0 % CR
 	 0 0 0 1 0 0 0 % EXR
@@ -169,50 +168,17 @@ if m == 6
 	 0 0 0 0 0 1 0 % CPI
      0 0 0 0 0 0 1 % INTR
   	];
-else
-    Qi(1:7,:,5) = [
-     0 0 0 0 0 0 0 % WGDP
-     0 1 0 0 0 0 0 % PCOM
-	 0 0 1 0 0 0 0 % CR
-	 0 0 0 1 0 0 0 % EXR
-	 0 0 0 0 0 0 0 % GDP
-	 0 0 0 0 0 1 0 % CPI
-     0 0 0 0 0 0 1 % INTR
-  	];
-end
 
 %======== The sixth equation - CPI
-if m == 3
     Qi(1:7,:,6) = [
-     0 0 0 0 0 0 0 % WGDP
-     0 0 0 0 0 0 0 % PCOM
+     1 0 0 0 0 0 0 % WGDP/VIX
+     0 1 0 0 0 0 0 % PCOM
 	 0 0 1 0 0 0 0 % CR
 	 0 0 0 1 0 0 0 % EXR
 	 0 0 0 0 0 0 0 % GDP
 	 0 0 0 0 0 0 0 % CPI
      0 0 0 0 0 0 1 % INTR
   	];
-elseif m == 5
-    Qi(1:7,:,6) = [
-     0 0 0 0 0 0 0 % WGDP
-     0 1 0 0 0 0 0 % VIX
-	 0 0 1 0 0 0 0 % CR
-	 0 0 0 1 0 0 0 % EXR
-	 0 0 0 0 0 0 0 % GDP
-	 0 0 0 0 0 0 0 % CPI
-     0 0 0 0 0 0 1 % INTR
-  	];
-else 
-    Qi(1:7,:,6) = [
-     1 0 0 0 0 0 0 % VIX
-     0 0 0 0 0 0 0 % PCOM
-	 0 0 1 0 0 0 0 % CR
-	 0 0 0 1 0 0 0 % EXR
-	 0 0 0 0 0 0 0 % GDP
-	 0 0 0 0 0 0 0 % CPI
-     0 0 0 0 0 0 1 % INTR
-  	];
-end
 
 %======== The seventh equation - INTR
     %%% No change, everything affects interest rate (monetary policy rate)

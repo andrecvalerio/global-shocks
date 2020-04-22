@@ -1,4 +1,4 @@
-function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky4(lags,nvar,nexo,indxC0Pres,m)
+function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky4(lags,nvar,nexo,indxC0Pres)
 %January 2016
 % The model:
 %   PCOM CR EXR GDP CPI INTR
@@ -9,7 +9,7 @@ function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky4(lags,nvar,nexo,indxC0Pres,m)
 %   equations
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   %        PCOM CR EXR  GDP CPI INTR %
-%   % PCOM	  X	  X   X    0    X   X  %
+%   % PCOM	  X	  X   X    0    0   X  %
 %   % CR	  0   X   X    0    0   X  %
 %   % EXR     0	  0   X    0    0   X  %
 %   % GDP	  0	  0   0    X    X   X  %
@@ -19,7 +19,7 @@ function [Ui,Vi,n0,np,ixmC0Pres] = ftd_cholesky4(lags,nvar,nexo,indxC0Pres,m)
 %
 %   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %   %        WGDP CR EXR  GDP CPI INTR %
-%   % WGDP	  X	  X   X    X    X   X  %
+%   % WGDP	  X	  X   X    0    0   X  %
 %   % CR	  0   X   X    0    0   X  %
 %   % EXR     0	  0   X    0    0   X  %
 %   % GDP	  0	  0   0    X    X   X  %
@@ -138,27 +138,15 @@ Ri = zeros(k,k,nvar);    % for nvar lagged and exogenous equations
 
 
 	%======== The fourth equation - GDP
-    if m == 7 
         Qi(1:6,:,4) = [
-         0 0 0 0 0 0
-         0 1 0 0 0 0
-         0 0 1 0 0 0
-         0 0 0 0 0 0
-         0 0 0 0 1 0
-         0 0 0 0 0 1];
-    else
-         Qi(1:6,:,4) = [
          1 0 0 0 0 0
          0 1 0 0 0 0
          0 0 1 0 0 0
          0 0 0 0 0 0
          0 0 0 0 1 0
-         0 0 0 0 0 1
-            ];
-    end
+         0 0 0 0 0 1];
 
    	%======== The fifth equation - CPI
-    if m == 8
         Qi(1:6,:,5) = [
          1 0 0 0 0 0
          0 1 0 0 0 0
@@ -167,17 +155,7 @@ Ri = zeros(k,k,nvar);    % for nvar lagged and exogenous equations
          0 0 0 0 0 0
          0 0 0 0 0 1
          ];
-    else 
-         Qi(1:6,:,5) = [
-         0 0 0 0 0 0
-         0 1 0 0 0 0
-         0 0 1 0 0 0
-         0 0 0 0 0 0
-         0 0 0 0 0 0
-         0 0 0 0 0 1
-         ];
-    end
-
+   
    	%======== The sixth equation - INTR
     %%% No change, everything affects interest rate (monetary policy rate)
 

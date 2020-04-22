@@ -137,11 +137,11 @@ fevd <- fevd %>%
                                   )
                 ) %>% 
   dplyr::mutate(Variable = recode_factor(Variable,
-                                         "WGDP" = "World Product",
+                                         "WGDP" = "World GDP",
                                          "VIX" = "VIX",
                                          "PCOM" = "Commodity Prices",
-                                         "GDP" = "Product",
-                                         "CPI" = "Inflation",
+                                         "GDP" = "GDP",
+                                         "CPI" = "CPI",
                                          "CR" = "Country Risk",
                                          "EXR" = "Exchange Rate",
                                          "INTR" = "Interest Rate"
