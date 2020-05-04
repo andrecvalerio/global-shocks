@@ -204,6 +204,14 @@ models <- c("Model 0",
             "Model 8",
             "Model 9")
 
+# List of variables
+vars <- list("GDP", 
+             "CPI", 
+             "Country Risk", 
+             "Exchange Rate", 
+             "Interest Rate"
+             )
+
 
 # Plotting all shocks for all models --------------------------------------
 
@@ -217,14 +225,42 @@ for (m in 1:length(models)) {
       
       for (s in 1:length(shocks[[1]])) {
         
-        plot_irf(models[m], shocks[[1]][s])
+        tmp <- lapply(vars, 
+                      plot_irf, 
+                      m=models[m], 
+                      shock = shocks[[1]][s]
+                      )
+        ggarrange(plotlist=tmp,
+                  nrow=5,
+                  ncol=1, 
+                  align = "v"
+                  ) %>% 
+          ggsave(filename=paste(tolower(substr(shocks[[1]][s],19,22)),"_m",substr(models[m],7,7),".pdf",sep=""), 
+                 width = 40, 
+                 height = 20, 
+                 units = "cm")
+          #plot_irf(models[m], shocks[[1]][s])  ---> deprecated
       }
       
     } else if (m == 4) {
       
       for (s in 1:length(shocks[[2]])) {
         
-        plot_irf(models[m], shocks[[2]][s])
+        tmp <- lapply(vars, 
+                      plot_irf, 
+                      m=models[m], 
+                      shock = shocks[[2]][s]
+        )
+        ggarrange(plotlist=tmp,
+                  nrow=5,
+                  ncol=1, 
+                  align = "v"
+        ) %>% 
+          ggsave(filename=paste(tolower(substr(shocks[[2]][s],19,22)),"_m",substr(models[m],7,7),".pdf",sep=""), 
+                 width = 40, 
+                 height = 20, 
+                 units = "cm")
+        #plot_irf(models[m], shocks[[1]][s])  ---> deprecated  
         
       }
       
@@ -232,7 +268,21 @@ for (m in 1:length(models)) {
       
       for (s in 1:length(shocks[[3]])) {
         
-        plot_irf(models[m], shocks[[3]][s])
+        tmp <- lapply(vars, 
+                      plot_irf, 
+                      m=models[m], 
+                      shock = shocks[[3]][s]
+        )
+        ggarrange(plotlist=tmp,
+                  nrow=5,
+                  ncol=1, 
+                  align = "v"
+        ) %>% 
+          ggsave(filename=paste(tolower(substr(shocks[[3]][s],19,22)),"_m",substr(models[m],7,7),".pdf",sep=""), 
+                 width = 40, 
+                 height = 20, 
+                 units = "cm")
+        #plot_irf(models[m], shocks[[1]][s])  ---> deprecated
         
       }
       
@@ -240,7 +290,21 @@ for (m in 1:length(models)) {
       
       for (s in 1:length(shocks[[4]])) {
         
-        plot_irf(models[m], shocks[[4]][s])
+        tmp <- lapply(vars, 
+                      plot_irf, 
+                      m=models[m], 
+                      shock = shocks[[4]][s]
+        )
+        ggarrange(plotlist=tmp,
+                  nrow=5,
+                  ncol=1, 
+                  align = "v"
+        ) %>% 
+          ggsave(filename=paste(tolower(substr(shocks[[4]][s],19,22)),"_m",substr(models[m],7,7),".pdf",sep=""), 
+                 width = 40, 
+                 height = 20, 
+                 units = "cm")
+        #plot_irf(models[m], shocks[[1]][s])  ---> deprecated
         
       }
       
@@ -248,7 +312,21 @@ for (m in 1:length(models)) {
       
       for (s in 1:length(shocks[[5]])) {
         
-        plot_irf(models[m], shocks[[5]][s])
+        tmp <- lapply(vars, 
+                      plot_irf, 
+                      m=models[m], 
+                      shock = shocks[[5]][s]
+        )
+        ggarrange(plotlist=tmp,
+                  nrow=5,
+                  ncol=1, 
+                  align = "v"
+        ) %>% 
+          ggsave(filename=paste(tolower(substr(shocks[[5]][s],19,22)),"_m",substr(models[m],7,7),".pdf",sep=""), 
+                 width = 40, 
+                 height = 20, 
+                 units = "cm")
+        #plot_irf(models[m], shocks[[1]][s])  ---> deprecated
         
       }
       
@@ -256,7 +334,21 @@ for (m in 1:length(models)) {
       
       for (s in 1:length(shocks[[6]])) {
         
-        plot_irf(models[m], shocks[[6]][s])
+        tmp <- lapply(vars, 
+                      plot_irf, 
+                      m=models[m], 
+                      shock = shocks[[6]][s]
+        )
+        ggarrange(plotlist=tmp,
+                  nrow=5,
+                  ncol=1, 
+                  align = "v"
+        ) %>% 
+          ggsave(filename=paste(tolower(substr(shocks[[6]][s],19,22)),"_m",substr(models[m],7,7),".pdf",sep=""), 
+                 width = 40, 
+                 height = 20, 
+                 units = "cm")
+        #plot_irf(models[m], shocks[[1]][s])  ---> deprecated
         
       }
       
@@ -264,7 +356,21 @@ for (m in 1:length(models)) {
       
       for (s in 1:length(shocks[[7]])) {
         
-        plot_irf(models[m], shocks[[7]][s])
+        tmp <- lapply(vars, 
+                      plot_irf, 
+                      m=models[m], 
+                      shock = shocks[[7]][s]
+        )
+        ggarrange(plotlist=tmp,
+                  nrow=5,
+                  ncol=1, 
+                  align = "v"
+        ) %>% 
+          ggsave(filename=paste(tolower(substr(shocks[[7]][s],19,22)),"_m",substr(models[m],7,7),".pdf",sep=""), 
+                 width = 40, 
+                 height = 20, 
+                 units = "cm")
+        #plot_irf(models[m], shocks[[1]][s])  ---> deprecated
         
       }
       
@@ -279,10 +385,12 @@ for (mm in 1:length(models)) {
   
   for (ss in 1:length(shocks[[1]])) {
     
-    plot_irf(models[mm],
-             shocks[[1]][ss],
-             1
-             )
+    
+    plot_irf("GDP",
+            models[mm],
+            shocks[[1]][ss],
+            1
+            )
     
   }
   
@@ -296,263 +404,37 @@ setwd(here::here("IRFs",
                  )
       )
 
-xticks <- seq(min(0),
-              max(16),
-              by = 2
-              )
+cfs <- length(shocks[[1]]) - 1
 
-irfs %>% dplyr::filter(Model == "Model 1" |  
-                  Model == "Model 0") %>% 
-  dplyr::mutate(Model = recode(Model,
-                               "Model 1" = "Benchmark",
-                               "Model 0" = "Counterfactual"
-                               )
-                ) %>% 
-  dplyr::filter(Shock == "Positive shock in WDEM") %>% 
-  dplyr::filter(Variable != "World GDP" &
-                  Variable != "VIX" &
-                  Variable != "Commodity Prices" &
-                  Variable != "Country Risk"
-                ) %>% 
-  ggplot(aes(x = Horizon,
-             y = Response,
-             color = Model
+vars <- list("GDP", 
+             "CPI", 
+             "Exchange Rate", 
+             "Interest Rate"
              )
-         ) +
-  geom_line() +
-  facet_grid(Variable ~ Country,
-             scales = "free",
-             space = "fixed"
-             ) +
-  scale_x_continuous("",
-                     expand = c(0, 0), 
-                     breaks = xticks
-                     ) +
-  scale_y_continuous("",
-                     breaks = scales::pretty_breaks(n = 7),
-                     labels = scales::percent_format(),
-                     position = "right",
-                     sec.axis = dup_axis()
-                     ) + 
-  geom_hline(yintercept = 0) + 
-  theme_bw() + 
-  geom_blank() + 
-  theme(panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        plot.title = element_text(hjust = 0.5),
-        strip.placement = "outside", 
-        strip.background = element_blank(),
-        strip.text.x = element_text(size=16), 
-        strip.text.y = element_text(size=12),
-        axis.text.y.right = element_blank(),
-        axis.ticks.y.right = element_blank(),
-        axis.title.y.left = element_blank(),
-        axis.title.y.right = element_blank(),
-        axis.title.x = element_blank(),
-        axis.title.y = element_text(margin(0,20,0,0)),
-        legend.position = "bottom"
-        ) +
-  scale_color_manual("",
-                    values = c("Benchmark" = "blue",
-                               "Counterfactual" = "red"
-                               )
-                    ) +
-  ggplot2::ggsave("wdem_m1_cf_irf.pdf", 
-                  width = 40, 
-                  height = 20, 
-                  units = "cm"
-                  )
 
-irfs %>% dplyr::filter(Model == "Model 1" |  
-                         Model == "Model 0"
-                       ) %>% 
-  dplyr::mutate(Model = recode(Model,
-                               "Model 1" = "Benchmark",
-                               "Model 0" = "Counterfactual"
-                               )
-                ) %>% 
-  dplyr::filter(Shock == "Negative shock in WUNC") %>% 
-  dplyr::filter(Variable != "World GDP" &
-                  Variable != "VIX" &
-                  Variable != "Commodity Prices" &
-                  Variable != "Country Risk"
-                ) %>% 
-  ggplot(aes(x = Horizon,
-             y = Response,
-             color = Model
-             )
-         ) +
-  geom_line() +
-  facet_grid(Variable ~ Country,
-             scales = "free",
-             space = "fixed"
-             ) +
-  scale_x_continuous("",
-                     expand = c(0, 0), 
-                     breaks = xticks
-                     ) +
-  scale_y_continuous("",
-                     breaks = scales::pretty_breaks(n = 7),
-                     labels = scales::percent_format(),
-                     position = "right",
-                     sec.axis = dup_axis()
-                     ) + 
-  geom_hline(yintercept = 0) + 
-  theme_bw() + 
-  geom_blank() + 
-  theme(panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        plot.title = element_text(hjust = 0.5),
-        strip.placement = "outside", 
-        strip.background = element_blank(),
-        strip.text.x = element_text(size=16), 
-        strip.text.y = element_text(size=12),
-        axis.text.y.right = element_blank(),
-        axis.ticks.y.right = element_blank(),
-        axis.title.y.left = element_blank(),
-        axis.title.y.right = element_blank(),
-        axis.title.x = element_blank(),
-        axis.title.y = element_text(margin(0,20,0,0)),
-        legend.position = "bottom"
-        ) +
-  scale_color_manual("",
-                     values = c("Benchmark" = "blue",
-                                "Counterfactual" = "red"
-                                )
-                     ) +
-  ggplot2::ggsave("wunc_m1_cf_irf.pdf", 
-                  width = 40, 
-                  height = 20, 
-                  units = "cm"
-                  )
+for (cf in 1:cfs) {
+  
+  tmp <- lapply(vars, 
+                plot_irf, 
+                m="Model 1", 
+                shock = shocks[[1]][cf],
+                intl = 0,
+                cf = 1
+                )
+  ggarrange(plotlist=tmp,
+            nrow=4,
+            ncol=1, 
+            align = "v",
+            legend = "bottom",
+            common.legend = TRUE
+            ) %>% 
+    ggsave(filename=paste(tolower(substr(shocks[[1]][cf],19,22)),"_m1_cf_irf.pdf",sep=""), 
+           width = 40, 
+           height = 20, 
+           units = "cm")
+  
+}
 
-
-irfs %>% dplyr::filter(Model == "Model 1" |  
-                         Model == "Model 0"
-                       ) %>% 
-  dplyr::mutate(Model = recode(Model,
-                               "Model 1" = "Benchmark",
-                               "Model 0" = "Counterfactual"
-                               )
-                ) %>% 
-  dplyr::filter(Shock == "Positive shock in WSUP") %>% 
-  dplyr::filter(Variable != "World GDP" &
-                  Variable != "VIX" &
-                  Variable != "Commodity Prices" &
-                  Variable != "Country Risk"
-                ) %>% 
-  ggplot(aes(x = Horizon,
-             y = Response,
-             color = Model
-             )
-         ) +
-  geom_line() +
-  facet_grid(Variable ~ Country,
-             scales = "free",
-             space = "fixed"
-             ) +
-  scale_x_continuous("",
-                     expand = c(0, 0), 
-                     breaks = xticks
-                     ) +
-  scale_y_continuous("",
-                     breaks = scales::pretty_breaks(n = 7),
-                     labels = scales::percent_format(),
-                     position = "right",
-                     sec.axis = dup_axis()
-                     ) + 
-  geom_hline(yintercept = 0) + 
-  theme_bw() + 
-  geom_blank() + 
-  theme(panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        plot.title = element_text(hjust = 0.5),
-        strip.placement = "outside", 
-        strip.background = element_blank(),
-        strip.text.x = element_text(size=16), 
-        strip.text.y = element_text(size=12),
-        axis.text.y.right = element_blank(),
-        axis.ticks.y.right = element_blank(),
-        axis.title.y.left = element_blank(),
-        axis.title.y.right = element_blank(),
-        axis.title.x = element_blank(),
-        axis.title.y = element_text(margin(0,20,0,0)),
-        legend.position = "bottom"
-        ) +
-  scale_color_manual("",
-                     values = c("Benchmark" = "blue",
-                                "Counterfactual" = "red"
-                                )
-                     ) +
-  ggplot2::ggsave("wsup_m1_cf_irf.pdf", 
-                  width = 40, 
-                  height = 20, 
-                  units = "cm"
-                  )
-
-
-irfs %>% dplyr::filter(Model == "Model 1" |  
-                         Model == "Model 0"
-                       ) %>% 
-  dplyr::mutate(Model = recode(Model,
-                               "Model 1" = "Benchmark",
-                               "Model 0" = "Counterfactual"
-                               )
-                ) %>% 
-  dplyr::filter(Shock == "Negative shock in WUNC") %>% 
-  dplyr::filter(Variable != "World GDP" &
-                  Variable != "VIX" &
-                  Variable != "Commodity Prices" &
-                  Variable != "Country Risk"
-                ) %>% 
-  ggplot(aes(x = Horizon,
-             y = Response,
-             color = Model
-             )
-         ) +
-  geom_line() +
-  facet_grid(Variable ~ Country,
-             scales = "free",
-             space = "fixed"
-             ) +
-  scale_x_continuous("",
-                     expand = c(0, 0), 
-                     breaks = xticks
-                     ) +
-  scale_y_continuous("",
-                     breaks = scales::pretty_breaks(n = 7),
-                     labels = scales::percent_format(),
-                     position = "right",
-                     sec.axis = dup_axis()
-                     ) + 
-  geom_hline(yintercept = 0) + 
-  theme_bw() + 
-  geom_blank() + 
-  theme(panel.grid.major = element_blank(), 
-        panel.grid.minor = element_blank(),
-        plot.title = element_text(hjust = 0.5),
-        strip.placement = "outside", 
-        strip.background = element_blank(),
-        strip.text.x = element_text(size=16), 
-        strip.text.y = element_text(size=12),
-        axis.text.y.right = element_blank(),
-        axis.ticks.y.right = element_blank(),
-        axis.title.y.left = element_blank(),
-        axis.title.y.right = element_blank(),
-        axis.title.x = element_blank(),
-        axis.title.y = element_text(margin(0,20,0,0)),
-        legend.position = "bottom"
-        ) +
-  scale_color_manual("",
-                     values = c("Benchmark" = "blue",
-                                "Counterfactual" = "red"
-                                )
-                     ) +
-  ggplot2::ggsave("wunc_m1_cf_irf.pdf", 
-                  width = 40, 
-                  height = 20, 
-                  units = "cm"
-                  )
 
 
 
