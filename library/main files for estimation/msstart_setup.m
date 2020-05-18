@@ -100,6 +100,9 @@ elseif m == 7
 elseif m == 8
     var_reg  = [vix, cr, exr, gdp, cpi, intr];
     varlista = {'VIX','CR','EXR','GDP','CPI','INTR'};
+elseif m == 10
+    var_reg = [wgdp, pcom, vix, cr, exr, gdp, cpi, intr];
+    varlista = {'WGDP', 'PCOM', 'VIX', 'CR', 'EXR', 'GDP', 'CPI', 'INTR'};
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
