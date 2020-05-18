@@ -43,26 +43,26 @@ if c == 0
     if cf~=0 && m == 0
         for j = 1:4
             for i = 1:9
-                estima3(1,j,cf)
-                estima3(i,j,0)
+                estima(1,j,cf)
+                estima(i,j,0)
             end
         end
     elseif cf == 0 && m == 0
         for j = 1:4
             for i = 1:9
-                estima3(i,j,cf)
+                estima(i,j,cf)
             end
         end
     elseif cf == 0 && m ~=0
         for j = 1:4
-            estima3(m,j,cf)
+            estima(m,j,cf)
         end
     end
 elseif m == 0
     for i = 1:9
-        estima3(i,c,0)
+        estima(i,c,0)
     end
 else
-    estima3(m,c,cf)
+    estima(m,c,cf)
 end
   
