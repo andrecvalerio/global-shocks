@@ -2,7 +2,8 @@
 pkgs <- list("ggthemes",
              "tidyverse",
              "ggpubr", 
-             "scales"
+             "scales",
+             "here"
              )
 # From the tidyverse package I use the following packages
 # dplyr, readxl, here, ggplot2
@@ -28,12 +29,12 @@ source("irfs.R")
 rm(list = ls())
 
 # FEVD Section ------------------------------------------------------------
-setwd(here::here("FEVD",
-                 "Code"
-                 )
-      )
+#setwd(here::here("FEVD",
+ #                "Code"
+  #               )
+   #   )
 
 # Calling the routine
-source("fevd.R")
-rm(list = ls())
+#source("fevd.R")
+#rm(list = ls())
 

@@ -79,6 +79,11 @@ get_shocks_irf <- function (df, m) {
                        INTR
                        )
     
+    low_tidy <- lapply(low_tidy,
+                       dplyr::select,
+                       Low)
+    
+    
     up_tidy <- lapply(list_df[(nvar*2+1):(nvar*3)],
                       tidyr::gather,
                       key = Variable,
@@ -92,6 +97,10 @@ get_shocks_irf <- function (df, m) {
                       CPI,
                       INTR
                       )
+    
+    up_tidy <- lapply(up_tidy,
+                      dplyr::select,
+                      Up)
     
     tidy_df <- vector("list",
                       length(shocks_tidy)
@@ -191,6 +200,10 @@ get_shocks_irf <- function (df, m) {
                        INTR
                        )
     
+    low_tidy <- lapply(low_tidy,
+                       dplyr::select,
+                       Low)
+    
     up_tidy <- lapply(list_df[(nvar*2+1):(nvar*3)],
                       tidyr::gather,
                       key = Variable,
@@ -203,6 +216,10 @@ get_shocks_irf <- function (df, m) {
                       CPI,
                       INTR
                       )
+    
+    up_tidy <- lapply(up_tidy,
+                      dplyr::select,
+                      Up)
     
     tidy_df <- vector("list",
                       length(shocks_tidy)
@@ -298,6 +315,10 @@ get_shocks_irf <- function (df, m) {
                        INTR
                        )
     
+    low_tidy <- lapply(low_tidy,
+                       dplyr::select,
+                       Low)
+    
     up_tidy <- lapply(list_df[(nvar*2+1):(nvar*3)],
                       tidyr::gather,
                       key = Variable,
@@ -309,6 +330,10 @@ get_shocks_irf <- function (df, m) {
                       CPI,
                       INTR
                       )
+    
+    up_tidy <- lapply(up_tidy,
+                      dplyr::select,
+                      Up)
     
     tidy_df <- vector("list",
                       length(shocks_tidy)
@@ -408,6 +433,10 @@ get_shocks_irf <- function (df, m) {
                        INTR
                        )
     
+    low_tidy <- lapply(low_tidy,
+                       dplyr::select,
+                       Low)
+    
     up_tidy <- lapply(list_df[(nvar*2+1):(nvar*3)],
                       tidyr::gather,
                       key = Variable,
@@ -420,6 +449,10 @@ get_shocks_irf <- function (df, m) {
                       CPI,
                       INTR
                       )
+    
+    up_tidy <- lapply(up_tidy,
+                      dplyr::select,
+                      Up)
     
     tidy_df <- vector("list",
                       length(shocks_tidy)
@@ -519,6 +552,10 @@ get_shocks_irf <- function (df, m) {
                        INTR
                        )
     
+    low_tidy <- lapply(low_tidy,
+                       dplyr::select,
+                       Low)
+    
     up_tidy <- lapply(list_df[(nvar*2+1):(nvar*3)],
                       gather,
                       key = Variable,
@@ -531,6 +568,10 @@ get_shocks_irf <- function (df, m) {
                       CPI,
                       INTR
                       )
+    
+    up_tidy <- lapply(up_tidy,
+                      dplyr::select,
+                      Up)
     
     tidy_df <- vector("list",
                       length(shocks_tidy)
@@ -626,6 +667,10 @@ get_shocks_irf <- function (df, m) {
                        INTR
                        )
     
+    low_tidy <- lapply(low_tidy,
+                       dplyr::select,
+                       Low)
+    
     up_tidy <- lapply(list_df[(nvar*2+1):(nvar*3)],
                       tidyr::gather,
                       key = Variable,
@@ -637,6 +682,10 @@ get_shocks_irf <- function (df, m) {
                       CPI,
                       INTR
                       )
+    
+    up_tidy <- lapply(up_tidy,
+                      dplyr::select,
+                      Up)
     
     tidy_df <- vector("list",
                       length(shocks_tidy)
@@ -732,6 +781,10 @@ get_shocks_irf <- function (df, m) {
                        INTR
                        )
     
+    low_tidy <- lapply(low_tidy,
+                       dplyr::select,
+                       Low)
+    
     up_tidy <- lapply(list_df[(nvar*2+1):(nvar*3)],
                       tidyr::gather,
                       key = Variable,
@@ -743,6 +796,10 @@ get_shocks_irf <- function (df, m) {
                       CPI,
                       INTR
                       )
+    
+    up_tidy <- lapply(up_tidy,
+                      dplyr::select,
+                      Up)
     
     tidy_df <- vector("list",
                       length(shocks_tidy)

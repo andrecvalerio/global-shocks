@@ -68,10 +68,10 @@ elseif m == 3 % Model with only WGDP & PCOM in the international side
     imf_adj(:,nvar+1:nvar*2) = imfhat(:,nvar+1:nvar*2).*f_pcom;
     
     low_adj(:,1:nvar) = imferrl1(:,1:nvar).*f_wgdp;
-    low_adj(:,nvar*2+1:nvar*3) = imferrl1(:,nvar*2+1:nvar*3).*f_pcom;
+    low_adj(:,nvar+1:nvar*2) = imferrl1(:,nvar+1:nvar*2).*f_pcom;
 
     up_adj(:,1:nvar) = imferrh1(:,1:nvar).*f_wgdp;
-    up_adj(:,nvar*2+1:nvar*3) = imferrh1(:,nvar*2+1:nvar*3).*f_pcom;
+    up_adj(:,nvar+1:nvar*2) = imferrh1(:,nvar+1:nvar*2).*f_pcom;
     
     % creating matrix with impulse response functions and lower and upper 
     % bounds for confidence interval of 68%
